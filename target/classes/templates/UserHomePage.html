@@ -50,14 +50,15 @@ body {
       <img src="/images/kohls_thumb.jpg" alt="target" width="15%" height="20%" style="margin-left:5%;"/><br/>
       <img src="/images/bedbath_thumb.jpg" alt="target" width="30%" height="20%" style="margin-left:3%;"/>
       <img src="/images/macys_thumb.png" alt="target" width="15%" height="20%" style="margin-left:3%;"/>
+      <form action="/ByShopName" method="post">
+      <input type="hidden" name="email" id="email" th:value="${user.email}"/>
+      <button id="submit" type="submit" class="btn btn-default"><strong>By Shop Name</strong></button>
+      </form>
       </div>
       </div>
     </div><!-- container end -->
-<footer class="footer">
-      <div class="container">
-        <p class="text-muted"><hr/><center>Copy Rights - Team 21 Site,inc 2015</center></p>
-      </div>
-    </footer>
+    <hr/>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src ="/js/bootstrap.min.js"></script>
 </body>

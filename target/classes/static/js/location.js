@@ -32,17 +32,17 @@ function initialize(position) {
 	});
 }
 
-var LocationList="";
+var couponLocationList="";
 
 function codeAddress() {
 	//infowindow = new google.maps.InfoWindow();
 	var enteredAddress=document.getElementById("address").value;
 	
-	$.post( "/getLocationList", {address:enteredAddress}).done(function(data) {
+	$.post( "/getCouponList", {address:enteredAddress}).done(function(data) {
 	    alert( "Data Loaded: " + JSON.stringify(data));
-	    LocationList=JSON.stringify(data);
-	    var jsonVal=JSON.parse(LocationList);
-		alert("parsed value::"+jsonVal["1"][0]+"length is::::"+Object.keys(jsonVal).length);
+	    couponLocationList=JSON.stringify(data);
+	    var jsonVal=JSON.parse(couponLocationList);
+		alert("parsed value::"+jsonVal["1"][5]+"length is::::"+Object.keys(jsonVal).length);
 		populateMap(jsonVal);
 	  },"json");
 	
@@ -82,7 +82,8 @@ function codeAddress() {
 	             		document.getElementById("content").innerHTML = (locations[i]);
 	             	});
 	                 
-	               }*/}
+	               }*/
+}
 
 function populateMap(listedValues,callback)
 {
@@ -94,9 +95,9 @@ function populateMap(listedValues,callback)
 	var geocoder = new google.maps.Geocoder();
 	
 	for (var prop in listedValues) {
-	      alert(prop+":::::::::"+listedValues[prop][1]);
+	      alert(prop+":::::::::"+listedValues[prop][5]);
 	      
-		geocoder.geocode( { 'address': listedValues[prop][1]}, function(results, status) {
+		geocoder.geocode( { 'address': listedValues[prop][5]}, function(results, status) {
 
 			  if (status == google.maps.GeocoderStatus.OK) {
 			    latitude = results[0].geometry.location.lat();
@@ -120,41 +121,20 @@ function createMarker(value,lat,long,key)
 		map : map,
 		position : placeLoc,
 		icon:image
+		//title : "Bike Location"
 	});
 	var latLng = marker.getPosition(); // returns LatLng object
 	map.setCenter(latLng);
-	
 	//marker onhover
 	google.maps.event.addListener(marker, 'mouseover', function(i) {
-		infowindow.setContent("<p>"+"ShopName: "+value[key][0]+"<br/>"+"Save Value: "+value[key][1]+"</p>");
+		infowindow.setContent("<p>"+"ShopName: "+value[key][1]+"<br/>"+"Save Value: "+value[key][2]+"</p>");
 		infowindow.open(map, this);
 	});
 	
 	//onclikc
 	google.maps.event.addListener(marker, 'click', function(i) {
-		
-		
-		$.post( "/getCouponList", {shopname:value[key][0]}).done(function(data) {
-		    alert( "Data Loaded: " + JSON.stringify(data));
-		    CouponList=JSON.stringify(data);
-		    var jsonVal=JSON.parse(CouponList);
-			alert("parsed value::"+jsonVal["1"][0]+"length is::::"+Object.keys(jsonVal).length);
-			$("#couponList").children().remove()
-			for(var prop in jsonVal)
-			{
-				var row = $("<tr />")
-			    $("#couponList").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
-			    row.append($("<td>" + jsonVal[prop][0]+ "</td>"));
-			    row.append($("<td>" + jsonVal[prop][1]+ "</td>"));
-			    row.append($("<td><img src="+ jsonVal[prop][2]+"/>"+ "</td>"));
-			    row.append($("<td>" + jsonVal[prop][3] + "</td>"));
-				
-			}
-			
-		  },"json");
-		
 		alert("in listner ");
-		//document.getElementById("downloadPic").src = value[key][0];
+		document.getElementById("downloadPic").src = value[key][3];
 	});
 }
 
