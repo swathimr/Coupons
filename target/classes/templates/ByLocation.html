@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Coupons By Location</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
+<style>
+body,table,div,h3,input
+{
+    font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script src ="/js/location.js"></script>
+<script>
+
+
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+	       <a class="navbar-brand" href="#" style="color:white"><em><strong>Coupons 4 U</strong></em></a>
+	    </div>
+       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+			<li><a href="/coupons"><strong>Home</strong></a></li>
+			<li><a href="#" th:href="@{/about}"><strong>About Us</strong></a></li>
+	        <li><a href="/coupons/users/logout"><strong>Log out</strong></a></li>	        
+	      </ul>
+    	</div>   
+      </div>
+    </nav><br></br>
+
+<!--  address tex box -->
+ <!-- <form action="coupons/users/login" id="addressform" class="form-horizontal" role="form" method="post"> -->
+ <!-- <p th:text="'email: ' + ${user.email}"/> -->
+ <div class="form-group">
+		<div class="col-md-5 col-md-offset-1">
+			<input type="text" class="form-control" id="address" placeholder="Enter zip code or address"/>
+		</div>
+		<div class="col-md-1">
+			<button type="submit" class="btn btn-default" value="Geocode" onclick="codeAddress()">
+				<span class="glyphicon glyphicon-search"></span></button>
+		</div>
+	</div><br/>
+<!-- </form> -->
+<br></br>
+<div class="row">
+  <div class="col-md-8" style="margin-left:2%;"><div id="map-canvas"></div></div>
+  <div class="col-md-3"><h4><strong>Selected Coupon</strong></h4><br/>
+  <div id="content"></div>
+  <table class="table" id="couponList" style="overflow: scroll">
+			<thead>
+			          <tr>
+			            <th>Title</th>
+			            <th>Description</th>
+			            <th>Image</th>
+						<th>Value</th>
+			          </tr>
+			 </thead>
+			 <!-- <tbody>
+			<tr th:each="own : ${CouponList}">
+			       <td th:text="${own.bikeId}" ></td>
+			       <td th:text="${own.requesterId}"></td>
+			       <td th:text="${own.fromDate}"></td>
+			       <td th:text="${own.toDate}"></td>  
+			</tr>
+			</tbody> -->
+			</table>
+  
+  <img src="" id="downloadPic"/>
+  </div>
+</div>
+
+<footer class="footer">
+      <div class="container">
+        <p class="text-muted"><hr/><center>Copy Rights - Team 21 Site,inc 2015</center></p>
+      </div>
+    </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src ="/js/bootstrap.min.js"></script>
+</body>
+</html>
