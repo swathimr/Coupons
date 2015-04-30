@@ -9,7 +9,6 @@
 <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-<script src ="/js/test.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src ="/js/bootstrap.min.js"></script>
 <script src="https://spreadsheets.google.com/feeds/cells/1Mu_vculJGX5vLBRL69PhRRYsdxwgccZf6vHtDNYqRWk/od6/public/values?alt=json-in-script&amp;callback=render" />
@@ -62,7 +61,7 @@ body {
           
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard 1</h1>
+          <h1 class="page-header">Chart 1</h1>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -300,15 +299,25 @@ body {
             },
 
             title: {
-                text: 'Highcharts Bubbles'
+                text: ' Coupon Popularity Chart'
             },
 
             series: [{
-                data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87], [51, 69, 40], [38, 23, 33], [57, 86, 31]]
+            	 name : 'Target',
+                data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87]]
             }, {
-                data: [[25, 10, 87], [2, 75, 59], [11, 54, 8], [86, 55, 93], [5, 3, 58], [90, 63, 44], [91, 33, 17], [97, 3, 56], [15, 67, 48], [54, 25, 81]]
+            	 name : 'Walmart',
+                data: [[25, 10, 87], [82, 75, 59], [11, 54, 8], [86, 55, 93], [5, 3, 58], [90, 63, 44], [91, 33, 17]]
             }, {
-                data: [[47, 47, 21], [20, 12, 4], [6, 76, 91], [38, 30, 60], [57, 98, 64], [61, 17, 80], [83, 60, 13], [67, 78, 75], [64, 12, 10], [30, 77, 82]]
+            	 name : 'Kohls',
+                data: [[75, 15, 52], [6, 44, 76], [12, 35, 10], [67, 23, 81], [8, 4, 45], [71, 36, 77], [82, 25, 19]]
+            }, {
+            	 name : 'Macys',
+                data: [[81, 29, 87], [69, 2, 42], [75, 11, 15], [61, 34, 27], [77, 7, 59], [63, 90, 81], [33, 91, 63]]
+            },
+            {
+            	 name : 'Staples',
+            	data: [[47, 47, 21], [20, 12, 4], [6, 76, 91], [38, 30, 60], [57, 98, 64], [61, 17, 80], [83, 60, 13]]
             }]
         });
     });

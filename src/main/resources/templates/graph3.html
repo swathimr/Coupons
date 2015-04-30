@@ -9,13 +9,13 @@
 <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-<script src ="/js/test.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src ="/js/bootstrap.min.js"></script>
 <script src="https://spreadsheets.google.com/feeds/cells/1Mu_vculJGX5vLBRL69PhRRYsdxwgccZf6vHtDNYqRWk/od6/public/values?alt=json-in-script&amp;callback=render" />
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/highcharts-3d.src.js"></script>
 <style>
 text {
   font: 10px sans-serif;
@@ -62,19 +62,203 @@ body {
           
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Graph 3</h1>
+          <h1 class="page-header">Chart 2</h1>
 
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              
-              <div id="container" style="height: 500px; min-width: 600px; max-width: 1000px; margin: 0 auto"></div>
-            </div>
+            
+              <div id="container"></div>
+<div id="sliders">
+	<table>
+		<tr><td>Alpha Angle</td><td><input id="R0" type="range" min="0" max="45" value="15"/> <span id="R0-value" class="value"></span></td></tr>
+	    <tr><td>Beta Angle</td><td><input id="R1" type="range" min="0" max="45" value="15"/> <span id="R1-value" class="value"></span></td></tr>
+	</table>
+</div>
+           
+           
             
           </div>
         </div>
       </div>
     </div>
-   
+      <script type="text/javascript">
+      /**
+       * Sand-Signika theme for Highcharts JS
+       * @author Torstein Honsi
+       */
 
+      // Load the fonts
+      Highcharts.createElement('link', {
+         href: '//fonts.googleapis.com/css?family=Signika:400,700',
+         rel: 'stylesheet',
+         type: 'text/css'
+      }, null, document.getElementsByTagName('head')[0]);
+
+      // Add the background image to the container
+      Highcharts.wrap(Highcharts.Chart.prototype, 'getContainer', function (proceed) {
+         proceed.call(this);
+         this.container.style.background = 'url(http://www.highcharts.com/samples/graphics/sand.png)';
+      });
+
+
+      Highcharts.theme = {
+         colors: ["#f45b5b", "#8085e9", "#8d4654", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+            "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+         chart: {
+            backgroundColor: null,
+            style: {
+               fontFamily: "Signika, serif"
+            }
+         },
+         title: {
+            style: {
+               color: 'black',
+               fontSize: '16px',
+               fontWeight: 'bold'
+            }
+         },
+         subtitle: {
+            style: {
+               color: 'black'
+            }
+         },
+         tooltip: {
+            borderWidth: 0
+         },
+         legend: {
+            itemStyle: {
+               fontWeight: 'bold',
+               fontSize: '13px'
+            }
+         },
+         xAxis: {
+            labels: {
+               style: {
+                  color: '#6e6e70'
+               }
+            }
+         },
+         yAxis: {
+            labels: {
+               style: {
+                  color: '#6e6e70'
+               }
+            }
+         },
+         plotOptions: {
+            series: {
+               shadow: true
+            },
+            candlestick: {
+               lineColor: '#404048'
+            },
+            map: {
+               shadow: false
+            }
+         },
+
+         // Highstock specific
+         navigator: {
+            xAxis: {
+               gridLineColor: '#D0D0D8'
+            }
+         },
+         rangeSelector: {
+            buttonTheme: {
+               fill: 'white',
+               stroke: '#C0C0C8',
+               'stroke-width': 1,
+               states: {
+                  select: {
+                     fill: '#D0D0D8'
+                  }
+               }
+            }
+         },
+         scrollbar: {
+            trackBorderColor: '#C0C0C8'
+         },
+
+         // General
+         background2: '#E0E0E8'
+         
+      };
+
+      // Apply the theme
+      Highcharts.setOptions(Highcharts.theme);
+      
+      
+      
+      
+      
+      
+              $(function () {
+            	    // Set up the chart
+            	    var chart = new Highcharts.Chart({
+            	        chart: {
+            	            renderTo: 'container',
+            	            type: 'column',
+            	            margin: 75,
+            	            options3d: {
+            	                enabled: true,
+            	                alpha: 15,
+            	                beta: 15,
+            	                depth: 50,
+            	                viewDistance: 25
+            	            }
+            	        },
+            	        title: {
+            	            text: 'No of coupons released on days of the week '
+            	        },
+            	        
+            	        plotOptions: {
+            	            column: {
+            	                depth: 25
+            	            }
+            	        },
+            	        series: [{
+            	        	name : 'Target',
+            	            data: [20, 15, 13, 25, 8, 12, 22]
+            	        },
+            	        {
+            	        	name : 'Walmart',
+            	            data: [16, 18, 11, 21, 30, 6, 8]
+            	        },
+            	        {
+            	        	name : 'Kohls',
+            	            data: [12, 10, 18, 33, 12, 19, 20]
+            	        },
+            	        {
+            	        	name : 'Staples',
+            	            data: [15, 9, 13, 27, 8, 16, 19]
+            	        },
+            	        {
+            	        	name : 'Macys',
+            	            data: [30, 25, 16, 14, 19, 31, 22]
+            	        }
+            	        ]
+            	    });
+
+            	    function showValues() {
+            	        $('#R0-value').html(chart.options.chart.options3d.alpha);
+            	        $('#R1-value').html(chart.options.chart.options3d.beta);
+            	    }
+
+            	    // Activate the sliders
+            	    $('#R0').on('change', function () {
+            	        chart.options.chart.options3d.alpha = this.value;
+            	        showValues();
+            	        chart.redraw(false);
+            	    });
+            	    $('#R1').on('change', function () {
+            	        chart.options.chart.options3d.beta = this.value;
+            	        showValues();
+            	        chart.redraw(false);
+            	    });
+
+            	    showValues();
+            	});
+              
+              
+              </script>
 </body>
 </html>

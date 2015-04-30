@@ -9,13 +9,14 @@
 <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-<script src ="/js/test.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src ="/js/bootstrap.min.js"></script>
 <script src="https://spreadsheets.google.com/feeds/cells/1Mu_vculJGX5vLBRL69PhRRYsdxwgccZf6vHtDNYqRWk/od6/public/values?alt=json-in-script&amp;callback=render" />
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/heatmap.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src ="/js/heat.js"></script>
 <style>
 text {
   font: 10px sans-serif;
@@ -23,9 +24,6 @@ text {
 </style>
 
 </head>
-
-
-
 
 <style>
 body {
@@ -62,7 +60,7 @@ body {
           
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard 2</h1>
+          <h1 class="page-header">Heat Map</h1>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -74,6 +72,5 @@ body {
         </div>
       </div>
     </div>
-   
 </body>
 </html>

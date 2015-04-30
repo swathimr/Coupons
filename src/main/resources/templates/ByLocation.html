@@ -11,6 +11,13 @@ body,table,div,h3,input
 {
     font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
 }
+table{
+display:block;
+overflow-y:scroll;
+height:500px;
+}
+thead > tr, tbody{
+    display:block;}
 </style>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script src ="/js/location.js"></script>
@@ -50,14 +57,30 @@ body,table,div,h3,input
 <!-- </form> -->
 <br></br>
 <div class="row">
-  <div class="col-md-8" style="margin-left:2%;"><div id="map-canvas"></div></div>
-  <div class="col-md-3"><h4><strong>Selected Coupon</strong></h4><br/>
-  <div id="content"></div>
-  <img src="" id="downloadPic"/>
+  <div class="col-md-7" style="margin-left:2%;"><div id="map-canvas"></div></div>
+  <div class="col-md-4"><h4><strong>Selected Coupon</strong></h4><br/>
+  <div style="height:60%" id="content">
+  <table class="table" id="couponList">
+			<thead>
+			          <tr>
+			            <th class="col-md-2">Title</th>
+			            <th class="col-md-4">Description</th>
+			            <th class="col-md-2">Image</th>
+						<th class="col-md-2">Value</th>
+			          </tr>
+			 </thead>
+			 <tbody>
+			</tbody>
+			</table>
+			</div>
   </div>
 </div>
 
-
+<footer class="footer">
+      <div class="container">
+        <p class="text-muted"><hr/><center>Copy Rights - Team 21 Site,inc 2015</center></p>
+      </div>
+    </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src ="/js/bootstrap.min.js"></script>
 </body>
