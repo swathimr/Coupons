@@ -21,5 +21,5 @@ function getCouponsForShop(enteredshopname) {
 
 function addnotehtml(title,desc,img,value,url) {
 	
-	$("#coupons_main_div").append('<div class="col-lg-3 col-xs-6" ><div class="thumbnail unit-bg" style = "height:300px"><a href=""><img src="' + img +  '" alt="deal1" height="50%" width="50%"/></a><div class="caption"><h4> ' + title + '</h4><p> '+ value + '</p><span class="view-deal" style="position:absolute;right:25px;bottom:25px;"><a href="' + url +'" class="btn btn-large btn-success">View&nbsp;<i class="icon-chevron-right icon-white"></i></a></span></p></div></div></div>')
+	$("#coupons_main_div").append('<div class="col-lg-3 col-xs-6" ><div class="thumbnail unit-bg" style = "height:300px"><a href=""><img src="' + img +  '" alt="deal1" height="50%" width="50%"/></a><div class="caption"><h4> ' + title + '</h4><p> '+ value + '</p><span class="view-deal" style="position:absolute;right:25px;bottom:25px;"><a href="' + url +'" class="btn btn-large btn-success">View&nbsp;</a></span></p></div></div></div>')
 }

@@ -32,7 +32,7 @@ public class ShopNameController {
 		locationHndlr = new LocationHandler();
 		String[] newShopName = shopname.split("=");
 		newShopName[1].toString();
-		JSONObject json= locationHndlr.getCouponList(newShopName[1].toString());
+		JSONObject json= locationHndlr.getCouponByShopList(newShopName[1].toString());
 		//model.addAttribute("CouponList", json.ge);
 		return json.toString();
 	}

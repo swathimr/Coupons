@@ -18,7 +18,7 @@ function initialize(position) {
   var latlng = new google.maps.LatLng(currentlat,currentlon);
   mapholder = document.getElementById('map-canvas')
   mapholder.style.height = '650px';
-  mapholder.style.width = '1000px';
+  mapholder.style.width = '100%';
   var mapOptions = {
     zoom: 12,
     center: latlng
@@ -45,7 +45,7 @@ function codeAddress() {
 		populateMap(jsonVal);
 	  },"json");
 	}
-var assignKey=null;
+
 function populateMap(listedValues,callback)
 {
 	loctn =[];
@@ -106,9 +106,9 @@ function createMarker(value,lat,long,key)
 			    $('#couponList tbody').append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
 			    row.append($('<td class="col-md-2">' + jsonVal[prop][0]+ '</td>'));
 			    row.append($('<td class="col-md-4">' + jsonVal[prop][1]+ '</td>'));
-			    row.append($('<td class="col-md-2"><img src="' +jsonVal[prop][2]+ '"/></td>'));
+			    row.append($('<td class="col-md-2"><img src="' +jsonVal[prop][2]+ ' " width="50%" height="50%"/></td>'));
 			    row.append($('<td class="col-md-2">' + jsonVal[prop][3] + '</td>'));
-				
+			    row.append($('<a href="' + jsonVal[prop][4] +'" class="btn btn-large btn-success">View&nbsp;<i class="icon-chevron-right icon-white"></i></a>'));
 			}
 			
 		  },"json");
