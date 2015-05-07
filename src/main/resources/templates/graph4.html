@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Coupon 280 graph 4</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"  />
+<link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src ="/js/bootstrap.min.js"></script>
+<script src="https://spreadsheets.google.com/feeds/cells/1Mu_vculJGX5vLBRL69PhRRYsdxwgccZf6vHtDNYqRWk/od6/public/values?alt=json-in-script&amp;callback=render" />
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/treemap.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src ="/js/treeGraph4.js"></script>
+<style>
+text {
+  font: 10px sans-serif;
+}
+</style>
+
+</head>
+
+
+
+
+<style>
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+</style>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+	       <a class="navbar-brand" href="#" style="color:white"><em><strong>Coupons 4 U</strong></em></a>
+	    </div>
+       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+			<li><a href="/coupons"><strong>Home</strong></a></li>
+			<li><a href="#" th:href="@{/about}"><strong>About Us</strong></a></li>
+	        <li><a href="/coupons/users/logout"><strong>Log out</strong></a></li>	        
+	      </ul>
+    	</div>   
+      </div>
+    </nav>
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            
+            <li><a href="/ShowGraph1">3D - Bubble</a></li>
+            <li><a href="/ShowGraph2">Heat Map</a></li>
+            <li><a href="/ShowGraph3">BarChart</a></li>
+            <li><a href="/ShowGraph4">TreeMap</a></li>
+          </ul>
+          
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Tree Map</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              
+              <div id="container" style="height: 500px; min-width: 600px; max-width: 1000px; margin: 0 auto"></div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+</body>
+</html>

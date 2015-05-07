@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<meta name="description" content=" get or view the online coupons based on the shop bame">
+<meta name="keyword" content="coupons, 280, get, by shop names">
+<title>Coupons 280 By Shop Name</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"  />
+<link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script src ="/js/test.js"></script>
+<script src ="/js/shopname.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src ="/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+	       <a class="navbar-brand" href="#" style="color:white"><em><strong>Coupons 4 U</strong></em></a>
+	    </div>
+       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+			<li><a href="/coupons"><strong>Home</strong></a></li>
+			<li><a href="#" th:href="@{/about}"><strong>About Us</strong></a></li>
+	        <li><a href="/coupons/users/logout"><strong>Log out</strong></a></li>	        
+	      </ul>
+    	</div>   
+      </div>
+    </nav>
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            
+      <li><a onclick="getCouponsForShop('Target')"><img src="/images/target_thumb.jpg" alt="target" width="15%" height="15%"/>&emsp;Target</a></li>
+      <li><a onclick="getCouponsForShop('Walmart')"><img src="/images/walmart_thumb.jpg" alt="target" width="15%" height="15%"/>&emsp;Walmart</a></li>
+      <li><a onclick="getCouponsForShop('Kohls')"><img src="/images/kohls_thumb.jpg" alt="target" width="15%" height="15%"/>&emsp;Kohls</a></li>
+      <li><a onclick="getCouponsForShop('Staples')"><img src="/images/bedbath_thumb.jpg" alt="target" width="15%" height="15%"/>&emsp;Staples</a></li>
+      <li><a onclick="getCouponsForShop('Macys')"><img src="/images/macys_thumb.png" alt="target" width="15%" height="15%"/>&emsp;Macys</a></li>
+     
+          </ul>
+          
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Shop Coupons</h1>
+
+         <div class="row" id="coupons_main_div">
+            
+            
+          </div>
+            
+          </div>
+        </div>
+      </div>
+    
+   
+</body>
+</html>
