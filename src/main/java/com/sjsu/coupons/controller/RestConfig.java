@@ -23,7 +23,7 @@ public class RestConfig {
 	@RequestMapping("/coupons")
     public String home(Model model) {
 		model.addAttribute("user", new User());
-        return "/Coupons";
+        return "Coupons";
     }
 	
 	@RequestMapping(value="/logout")
