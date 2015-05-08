@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Coupon 280 Graph 3</title>
+<title>Coupon User Home Page</title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"  />
 <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -41,9 +41,9 @@ body {
 	    </div>
        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-right">
-			<li><a href="/coupons"><strong>Home</strong></a></li>
-			<li><a href="#" th:href="@{/about}"><strong>About Us</strong></a></li>
-	        <li><a href="/coupons/users/logout"><strong>Log out</strong></a></li>	        
+			<li><a href="/coupons" style="color:white"><strong>Home</strong></a></li>
+			<li><a href="#" th:href="@{/about}" style="color:white"><strong>About Us</strong></a></li>
+	        <li><a href="/logout" style="color:white"><strong>Log out</strong></a></li>	         
 	      </ul>
     	</div>   
       </div>
@@ -53,16 +53,16 @@ body {
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             
-            <li><a href="/ShowGraph1">Graph 1</a></li>
-            <li><a href="/ShowGraph2">Graph 2</a></li>
-            <li><a href="/ShowGraph3">Graph 3</a></li>
-            <li><a href="/ShowGraph4">Graph 4</a></li>
+             <li><a href="/ShowGraph1">3D - Bubble</a></li>
+            <li><a href="/ShowGraph2">Heat Map</a></li>
+            <li><a href="/ShowGraph3">BarChart</a></li>
+            <li><a href="/ShowGraph4">TreeMap</a></li>
           </ul>
           
           
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Chart 2</h1>
+          <h1 class="page-header">Bar Chart</h1>
 
           <div class="row placeholders">
             
@@ -184,7 +184,7 @@ body {
       
       
       
-              $(function () {
+              function displayGraph(target,walmart,kohls,macys,staples) {
             	    // Set up the chart
             	    var chart = new Highcharts.Chart({
             	        chart: {
@@ -210,43 +210,76 @@ body {
             	        },
             	        series: [{
             	        	name : 'Target',
-            	            data: [20, 15, 13, 25, 8, 12, 22]
+            	            data: target
             	        },
             	        {
             	        	name : 'Walmart',
-            	            data: [16, 18, 11, 21, 30, 6, 8]
+            	            data: walmart
             	        },
             	        {
             	        	name : 'Kohls',
-            	            data: [12, 10, 18, 33, 12, 19, 20]
+            	            data: kohls
             	        },
             	        {
             	        	name : 'Staples',
-            	            data: [15, 9, 13, 27, 8, 16, 19]
+            	            data: staples
             	        },
             	        {
             	        	name : 'Macys',
-            	            data: [30, 25, 16, 14, 19, 31, 22]
+            	            data: macys
             	        }
             	        ]
             	    });
+            	    
             	    function showValues() {
-            	        $('#R0-value').html(chart.options.chart.options3d.alpha);
-            	        $('#R1-value').html(chart.options.chart.options3d.beta);
-            	    }
-            	    // Activate the sliders
-            	    $('#R0').on('change', function () {
-            	        chart.options.chart.options3d.alpha = this.value;
-            	        showValues();
-            	        chart.redraw(false);
-            	    });
-            	    $('#R1').on('change', function () {
-            	        chart.options.chart.options3d.beta = this.value;
-            	        showValues();
-            	        chart.redraw(false);
-            	    });
+              	        $('#R0-value').html(chart.options.chart.options3d.alpha);
+              	        $('#R1-value').html(chart.options.chart.options3d.beta);
+              	    }
+              	    // Activate the sliders
+              	    $('#R0').on('change', function () {
+              	        chart.options.chart.options3d.alpha = this.value;
+              	        showValues();
+              	        chart.redraw(false);
+              	    });
+              	    $('#R1').on('change', function () {
+              	        chart.options.chart.options3d.beta = this.value;
+              	        showValues();
+              	        chart.redraw(false);
+              	    });
+                      
+            	    
             	    showValues();
-            	});
+            	}
+              
+              
+              window.onload = function() {
+            	  
+            	  $.get( "/getGraph3", function( data ) {
+            	 		var results2 = JSON.parse(data);
+            			var walmart = [];
+            			var target = [];
+            			var kohls = [];
+            			var macys = [];
+            			var staples = [];
+            			for (var idx in results2) {
+            				if(results2[idx]["shopname"]=="Target")
+            					target.push(parseInt(results2[idx]["v1"],10),parseInt(results2[idx]["v2"],10),parseInt(results2[idx]["v3"],10),parseInt(results2[idx]["v4"],10),parseInt(results2[idx]["v5"],10),parseInt(results2[idx]["v6"],10),parseInt(results2[idx]["v7"],10));
+            				else if(results2[idx]["shopname"]=="Walmart")
+            					walmart.push(parseInt(results2[idx]["v1"],10),parseInt(results2[idx]["v2"],10),parseInt(results2[idx]["v3"],10),parseInt(results2[idx]["v4"],10),parseInt(results2[idx]["v5"],10),parseInt(results2[idx]["v6"],10),parseInt(results2[idx]["v7"],10));
+            				else if(results2[idx]["shopname"]=="Macys")
+            					macys.push(parseInt(results2[idx]["v1"],10),parseInt(results2[idx]["v2"],10),parseInt(results2[idx]["v3"],10),parseInt(results2[idx]["v4"],10),parseInt(results2[idx]["v5"],10),parseInt(results2[idx]["v6"],10),parseInt(results2[idx]["v7"],10));
+            				else if(results2[idx]["shopname"]=="Kohls")
+            					kohls.push(parseInt(results2[idx]["v1"],10),parseInt(results2[idx]["v2"],10),parseInt(results2[idx]["v3"],10),parseInt(results2[idx]["v4"],10),parseInt(results2[idx]["v5"],10),parseInt(results2[idx]["v6"],10),parseInt(results2[idx]["v7"],10));
+            				else if(results2[idx]["shopname"]=="Staples")
+            					staples.push(parseInt(results2[idx]["v1"],10),parseInt(results2[idx]["v2"],10),parseInt(results2[idx]["v3"],10),parseInt(results2[idx]["v4"],10),parseInt(results2[idx]["v5"],10),parseInt(results2[idx]["v6"],10),parseInt(results2[idx]["v7"],10));
+            									
+            						
+            	        }
+            			
+            			displayGraph(target,walmart,kohls,macys,staples);
+            	 		});
+       
+        }
               
               
               </script>
