@@ -23,7 +23,9 @@ public class UserController {
 	{
 		System.out.println("email id obtained is:: "+user.email);
 		usrHndlr= new UserHandler();
+
 		boolean userVal=usrHndlr.checkIfUserExists(user.getEmail());
+
 		if(userVal)
 		{
 		System.out.println("USer exists.. So authenticating");
@@ -41,7 +43,9 @@ public class UserController {
 	{
 		System.out.println("yup in here"+user.getEmail()+"FB name is:::"+user.getName()+user.getPassword());
 		model.addAttribute("user",user);
-		boolean userVal=usrHndlr.checkIfUserExists(user.getEmail());
+
+		boolean userVal=true;//usrHndlr.checkIfUserExists(user.getEmail());
+
 		usrHndlr=new UserHandler();
 		if(userVal)
 		{
@@ -63,6 +67,7 @@ public class UserController {
 	{
 		usrHndlr= new UserHandler();
 		boolean userVal=usrHndlr.checkIfUserExists(user.getEmail());
+
 		if(!userVal)
 		{
 			System.out.println("Email id does not exist.So signing up the user");
@@ -76,9 +81,4 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/logout")
-	public String logout(@ModelAttribute User user,RedirectAttributes redirectAttributes) throws SQLException
-	{
-		return "coupons";
-	}
 }

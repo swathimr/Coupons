@@ -20,6 +20,10 @@ import com.mysql.jdbc.Statement;
 
 public class ScheduledScrapingData {
 	
+	
+	public final static String USERNAME="root";
+	public final static String PASSWORD="cmpe280_team21";
+	public final static String DB_STRING = "jdbc:mysql://cmpe280.cotpkp31md0p.us-west-1.rds.amazonaws.com:3306/cmpe280";
 	Connection conn;
 	Statement stmt = null;
 	PreparedStatement preparedstmt;

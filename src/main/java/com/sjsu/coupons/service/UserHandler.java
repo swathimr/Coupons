@@ -27,6 +27,7 @@ public class UserHandler {
 	      conn.close();      
 	}
 	
+
 	public boolean checkIfUserExists(String email) throws SQLException
 	{
 		String emailVal=null;
@@ -53,6 +54,6 @@ public class UserHandler {
 			returnValue = true;
 		}
 		return returnValue;
-	}
 	
+}
 }
